@@ -1,6 +1,6 @@
-# Memory Management OS Assignment
+# Memory Management OS 
 
-✅ This repository contains a compact custom memory allocator implementation intended for learning and demonstration in an Operating Systems or Memory Management assignment. The primary implementation is in `2022MT11854mmu.h` and offers several allocation strategies.
+✅ This repository contains a compact custom memory allocator implementation intended for learning and demonstration in an Operating Systems or Memory Management assignment. The primary implementation is in `memoryallotment.h` and offers several allocation strategies.
 
 ---
 
@@ -95,7 +95,7 @@ Notes:
   ./test
   ```
 
-- `test.c` example should include `2022MT11854mmu.h` and perform a sequence of allocations and frees using the different functions. Use logging (printf) to verify behavior.
+- `test.c` example should include `memoryallotment.h` and perform a sequence of allocations and frees using the different functions. Use logging (printf) to verify behavior.
 
 ---
 
@@ -107,31 +107,3 @@ Notes:
 
 ---
 
-## Limitations & Notes
-
-- This is a teaching/demonstration allocator and is **not** production-ready:
-  - Not thread-safe (no locks are used).
-  - Single, fixed-size arenas (`ARENA_SIZE`) for both implementations; no arena resizing.
-  - No `realloc` or `calloc` implementations are included.
-  - `avl_pool` is a small fixed pool (256 nodes); allocation of a large number of free blocks may exhaust it.
-  - Buddy allocator parameters are fixed (`BUDDY_MIN_BLOCK` and `BUDDY_MAX_ORDER`) and tuned to the defined arena size.
-
----
-
-## Suggestions for extension
-
-- Add `realloc` and `calloc` wrapper functions.
-- Support multiple or resizable arenas to emulate larger heaps.
-- Improve AVL node management (dynamic allocation rather than a fixed pool) and thread safety.
-- Add instrumentation to track fragmentation, utilization, and average search costs.
-
----
-
-## Contact / Notes
-
-- This is meant to accompany a university assignment; adjust constants and behaviors to match assignment constraints.
-- Consider moving implementation code to a `.c` file and having a cleaner header that exposes just the API for production use.
-
----
-
-💡 Tip: Start by using small test programs to try each strategy in isolation, then compare fragmentation and allocation speed to explore trade-offs.
